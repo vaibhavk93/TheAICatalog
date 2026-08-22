@@ -1364,8 +1364,8 @@
   <h3>A fourth axis: what form does the input arrive in?</h3>
   <p>Text only, text plus user-uploaded images, or a document pipeline reading scans and
   PDFs — this single question changes the cost model, the eval set, and the threat model
-  before a single line of code is written. See Drawer 10for the routing decision this
-  creates. And when the input is spoken rather than typed, Drawer 24covers what changes.</p>
+  before a single line of code is written. See Drawer 11 for the routing decision this
+  creates. And when the input is spoken rather than typed, Drawer 25 covers what changes.</p>
   <div class="dg">
     <div class="nd dg-def">
       <button type="button" class="nd-h" aria-expanded="false">
@@ -1461,7 +1461,7 @@
             </button>
             <div class="nd-d"><p>Turn each card into numbers capturing its meaning, so
             "similar idea" becomes "close together".</p>
-            <p>Drawer 09shows how to make this dramatically better by annotating each
+            <p>Drawer 10 shows how to make this dramatically better by annotating each
             card first.</p></div>
           </div>
           <div class="arw"><i>↓</i></div>
@@ -1836,7 +1836,7 @@ on synthetic examples looks fine on your eval set and fails exactly where the
 real world differs from your seed data.</div>
 
 <div class="note"><span class="tag">PII discovery and masking as a process, not a policy line</span>
-Drawer 17covers the legal obligation — plan deletion before you index.
+Drawer 31 covers the legal obligation — plan deletion before you index.
 This is the operational side: automated PII discovery scans (rule-based for
 structured fields like phone numbers and PAN numbers, ML-based for PII buried
 in free text) run <strong>before</strong> any dataset is used for training,
@@ -2300,7 +2300,7 @@ never clean enough to support any of them.</p></div>
       <tr><td><strong>Fallback</strong></td><td>The primary path fails cleanly into a secondary one — a search API times out, fall back to cached results or a human handoff.</td><td>A silent fallback that degrades quality without telling the user is worse than a visible failure</td></tr>
     </tbody>
   </table></div>
-  <div class="note"><span class="tag">The Drawer 13connection</span>
+  <div class="note"><span class="tag">The Drawer 14 connection</span>
   This is the mechanics behind "select tools" and "act" in the ten-step agent lifecycle —
   this table is what those two steps actually have to get right.</div>
 
@@ -2505,7 +2505,7 @@ never clean enough to support any of them.</p></div>
   structured lookup, and let RAG handle everything that's genuinely prose.</p></div>
 
   <h3>When the real answer is fine-tuning, not more RAG</h3>
-  <p>Drawer 05already gave you the one-line split — RAG changes what the model
+  <p>Drawer 05 already gave you the one-line split — RAG changes what the model
   <em>knows</em>, fine-tuning changes how it <em>behaves</em>. Here's what "fine-tuning"
   actually involves, briefly, so it's not a black box the next time someone suggests it.</p>
   <div class="card">
@@ -3123,7 +3123,7 @@ filter comes off.</p>
   confident, wrong answer instead of an error.</div>
 
   <h3><span class="bf">Advanced</span> Three architectures for multimodal RAG</h3>
-  <p>Drawer 07teaches retrieval over text chunks. When the answer lives in a chart or a
+  <p>Drawer 08 teaches retrieval over text chunks. When the answer lives in a chart or a
   table layout, text chunks lose it. There are exactly three production architectures, and
   they trade recall against storage and cost in a way you can size on a napkin.</p>
   <div class="dg">
@@ -3310,7 +3310,7 @@ filter comes off.</p>
 </div>
 
 <h3>The video side: understanding, not just generation</h3>
-<p>Drawer 11covers <em>making</em> video. This is the reverse capability — a system that
+<p>Drawer 12 covers <em>making</em> video. This is the reverse capability — a system that
 has to <em>understand</em> one, which is a separate, less mature capability with its own
 failure shape.</p>
 <div class="tw"><table>
@@ -3410,7 +3410,7 @@ trade off directly against sampling rate.</div>
   like your words. You steer it with reference images, not longer prompts. It is billed per
   picture and takes seconds to minutes, so it is a background job. And there is no accuracy
   number — you judge it with two separate scores and a human who says yes or no.</p>
-  <p class="lede">Drawer 10was about reading pictures. This one is about making them.</p>
+  <p class="lede">Drawer 11 was about reading pictures. This one is about making them.</p>
 
   <p>Riverstone Bank's marketing team wants a Diwali campaign: one offer, nine languages,
   three ad sizes, a warm family scene, live in six days. A photo shoot takes three weeks.
@@ -3740,7 +3740,7 @@ trade off directly against sampling rate.</div>
   ratio — from reviewing 20 to ship 1, down to reviewing 3 to ship 1 — not whether a human
   gate exists at all.</p></div>
 
-<!-- Drawer 11activity: Spot-the-mistake brand review drill -->
+<!-- Drawer 12activity: Spot-the-mistake brand review drill -->
 <style>
   #genmedia-activity .fc{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;
     margin:24px 0}
@@ -3767,7 +3767,7 @@ trade off directly against sampling rate.</div>
 <script>
 (function(){
   // ponytail: reuses the exact .fc/.flip CSS + click-to-toggle pattern already
-  // used for the Drawer 35recall deck (see catalog.html CARDS array) instead
+  // used for the Drawer 36 recall deck (see catalog.html CARDS array) instead
   // of inventing a new flip-card component.
   var CARDS = [
     ["A festive banner for a bank's Diwali loan offer — five fingers on the customer's hand, correct logo, but the ₹ symbol is malformed and reads as a stray glyph.",
@@ -3971,7 +3971,7 @@ trade off directly against sampling rate.</div>
 <section class="page" id="p-lifecycle" aria-labelledby="h-lifecycle">
   <p class="eyebrow">Drawer 14 · Inside one agentic turn</p>
   <h2 id="h-lifecycle">What happens between your question and its action</h2>
-  <p class="tldr"><b>TL;DR</b> Drawer 08showed one tool call. A real agent turn is ten
+  <p class="tldr"><b>TL;DR</b> Drawer 09 showed one tool call. A real agent turn is ten
   steps: understand → plan → decompose → select tools → retrieve → reason → act →
   validate → update memory → respond. This is what "how does an agent think?" is actually
   asking about.</p>
@@ -4014,7 +4014,7 @@ trade off directly against sampling rate.</div>
         <p class="pipe-panel-t">1 · Understand — turn words into a structured request</p>
         <p><strong>What happens:</strong> the system extracts intent ("dispute a
         transaction," "block a card," "apply for a loan") and entities (amounts, dates,
-        account references) from the raw message. This is Drawer 14's "intent & context
+        account references) from the raw message. This is Drawer 07's "intent & context
         engine" from the six-questions map, one level more detailed.</p>
         <p><strong>The decision here:</strong> how much ambiguity do you tolerate before
         asking a clarifying question? Too eager to ask, and every turn feels like an
@@ -4127,7 +4127,7 @@ trade off directly against sampling rate.</div>
         <p class="pipe-panel-t">9 · Update memory — record what just happened</p>
         <p><strong>What happens:</strong> the outcome of this step gets written to
         whichever memory it belongs in — conversation memory (what we just did), a
-        user-profile store (a stated preference), or a log (for evaluation later). Drawer 13covers this in full.</p>
+        user-profile store (a stated preference), or a log (for evaluation later). Drawer 13 covers this in full.</p>
         <p><strong>The decision here:</strong> deciding <em>what kind</em> of memory each
         fact belongs in up front avoids the two failure modes of memory: forgetting things
         that should persist, and dragging stale one-off details into every future
@@ -4241,7 +4241,7 @@ run, not one step.</p>
     it's allowed to say "done."</td></tr>
     <tr><td><strong>Cost explosion</strong></td><td>An agent with no step or spend ceiling
     burns through model and tool calls faster than anyone notices until the bill
-    arrives.</td><td>A per-run budget enforced in code, the same way Drawer 26enforces a
+    arrives.</td><td>A per-run budget enforced in code, the same way Drawer 27 enforces a
     per-user rate limit.</td></tr>
   </tbody>
 </table></div>
@@ -4602,7 +4602,7 @@ how confident the agent sounds.</div>
     <div class="nd">
       <button type="button" class="nd-h" aria-expanded="false">
         <span class="nd-k">4 · Retrieved context</span>
-        <span class="nd-t">The cards Drawer 07fetched — marked clearly as data</span>
+        <span class="nd-t">The cards Drawer 08 fetched — marked clearly as data</span>
       </button>
       <div class="nd-d"><p>Labelled as untrusted, retrieved data, never as
       instructions — this labelling is the actual defense against the
@@ -4635,7 +4635,7 @@ how confident the agent sounds.</div>
   is Drawer 09's structured-output guidance.</div>
 
   <h3>Structured prompting — constraining the shape, not just the content</h3>
-  <p>Drawer 08covered structured <em>output</em> for tool calls — the arguments a tool
+  <p>Drawer 09 covered structured <em>output</em> for tool calls — the arguments a tool
   receives. This is a related but separate technique: constraining the model's own
   <em>text response</em> to a fixed shape, whether or not a tool is involved.</p>
   <div class="tw"><table>
@@ -4848,11 +4848,11 @@ how confident the agent sounds.</div>
       Fast, deterministic, run on every commit.</li>
       <li><strong>Integration tests for tool calls</strong> — call the actual tool function
       against a test database or a sandboxed API, assert it returns the right shape of data
-      and, just as important, that the permission gate from Drawer 08actually blocks what
+      and, just as important, that the permission gate from Drawer 09 actually blocks what
       it's supposed to block.</li>
       <li><strong>Red-teaming as a standing practice, not a one-time audit</strong> — a
       recurring exercise (weekly or monthly, not "before launch and never again") where
-      someone actively tries the prompt-injection and jailbreak patterns from Drawer 17against the current, live prompt. Prompts drift as they get edited; an attack that
+      someone actively tries the prompt-injection and jailbreak patterns from Drawer 18 against the current, live prompt. Prompts drift as they get edited; an attack that
       failed in March can start working again after an unrelated June change.</li>
     </ul>
   </div>
@@ -5082,7 +5082,7 @@ how confident the agent sounds.</div>
   <div class="tw"><table>
     <thead><tr><th>Requirement</th><th>What it actually means for the bot</th></tr></thead>
     <tbody>
-      <tr><td>Audit trail</td><td>Every action a bot takes (Drawer 13step 7) needs a
+      <tr><td>Audit trail</td><td>Every action a bot takes (Drawer 14 step 7) needs a
       permanent, tamper-evident record of what was done, when, and under whose
       authorization — not just an application log you could edit. This is what Drawer 27's
       logging has to satisfy, not just debugging convenience.</td></tr>
@@ -5160,7 +5160,7 @@ how confident the agent sounds.</div>
   <div class="warn"><span class="tag">Moderate both directions</span>
   The incoming message <em>and</em> the generated answer — a clean question can still
   produce a bad answer if retrieval hands back a bad passage. This is the input-side half
-  of Drawer 19step 7's output check; run both, they catch different things.</div>
+  of Drawer 19 step 7's output check; run both, they catch different things.</div>
 
   <h3>Four more attacks worth naming precisely</h3>
   <p>The OWASP table above lists these; here's what each one actually looks like.</p>
@@ -5401,11 +5401,11 @@ how confident the agent sounds.</div>
       vs. both, before anything runs</td></tr>
       <tr><td><strong>Planner</strong></td><td>Step 1 · Understand, plus Drawer 14's own
       plan/decompose steps for anything multi-step — this pipeline shows one question's
-      path; Drawer 13zooms into what "Understand" does when the question needs several
+      path; Drawer 14 zooms into what "Understand" does when the question needs several
       moves</td></tr>
       <tr><td><strong>Memory</strong></td><td>Not a numbered step here — it's a service
       the pipeline reads from and writes to, mainly at step 1 (recall) and step 8 (update
-      after responding). Drawer 14is the dedicated treatment</td></tr>
+      after responding). Drawer 15 is the dedicated treatment</td></tr>
       <tr><td><strong>Retriever</strong></td><td>Step 3 · Retrieve</td></tr>
       <tr><td><strong>Tools</strong></td><td>Step 4 · Act</td></tr>
       <tr><td><strong>LLM</strong></td><td>Step 6 · Generate (and quietly, steps 1 and 2
@@ -5469,7 +5469,7 @@ how confident the agent sounds.</div>
             <span class="nd-s">Block, reissue, dispute</span>
           </button>
           <div class="nd-d"><p>Owns every card-changing action — and every one of them
-          needs Drawer 13step 7's confirmation gate before it runs.</p></div>
+          needs Drawer 14 step 7's confirmation gate before it runs.</p></div>
         </div>
         <div class="nd">
           <button type="button" class="nd-h" aria-expanded="false">
@@ -5505,7 +5505,7 @@ how confident the agent sounds.</div>
           <span class="nd-s">One coherent answer, not five tool outputs stitched together</span>
         </button>
         <div class="nd-d"><p>The supervisor merges whatever the specialists returned into
-        Drawer 13step 10's single plain-language answer. The customer never sees that
+        Drawer 14 step 10's single plain-language answer. The customer never sees that
         five agents were involved.</p></div>
       </div>
     </div>
@@ -6046,7 +6046,7 @@ how confident the agent sounds.</div>
   </table></div>
 
   <div class="keynote"><p>A working prototype in one day is a real, legitimate milestone —
-  and, by design, the least defended version of this bot you will ever ship. Drawers 25 and 27 are what closes that gap.</p></div>
+  and, by design, the least defended version of this bot you will ever ship. Drawers 26 and 27 are what closes that gap.</p></div>
 
   <div class="next" id="next-build"></div>
 </section>
@@ -6263,7 +6263,7 @@ how confident the agent sounds.</div>
   A generated widget is still output the model produced — apply the same grounding and
   injection caution (Drawer 18) to what it renders as you would to what it says.</div>
 
-  <p>None of this UI polish matters if there's no visible way out. Drawer 22's escalation
+  <p>None of this UI polish matters if there's no visible way out. Drawer 21's escalation
   step (human handoff) is a backend decision — a low-confidence answer triggers it — but
   the frontend is what makes it usable: a clearly labelled "talk to a person" option, not
   a dead end the user has to discover by giving up.</p>
@@ -6387,7 +6387,7 @@ how confident the agent sounds.</div>
   <h2 id="h-voice">When the interface is a phone call</h2>
   <p class="tldr"><b>TL;DR</b> Half a second, or it feels broken. No screen, so no
   citations. No scroll-back, so read it back before you act.</p>
-  <p class="lede">Drawer 22covered the first interface — a screen someone reads. This is
+  <p class="lede">Drawer 23 covered the first interface — a screen someone reads. This is
   the second: a phone call, where there is no screen at all. Riverstone Bank gives Riva a
   phone number. Same knowledge base, same tools, same model — and on day one it is
   unusable. It reads bullet points out loud. It says "according to source 3." It talks over
@@ -6567,8 +6567,8 @@ how confident the agent sounds.</div>
         <p>No text in the middle.</p>
         <p><strong>✓ Merit:</strong> meaningfully lower latency, and it keeps tone and
         hesitation, so it sounds human.</p>
-        <p><strong>✗ Demerit:</strong> no text transcript in the middle means Drawer 14and
-        Drawer 15both get harder; far less control over voice and behaviour; and it
+        <p><strong>✗ Demerit:</strong> no text transcript in the middle means Drawer 14 and
+        Drawer 15 both get harder; far less control over voice and behaviour; and it
         re-charges accumulated audio context every turn, so cost per conversation runs much
         higher.</p>
         <p><strong>Pick this when:</strong> naturalness is the product and the conversation
@@ -6626,7 +6626,7 @@ how confident the agent sounds.</div>
       <tr><td>Dead-air rate</td><td>Silence the caller experiences as nothing happening</td></tr>
       <tr><td>Barge-in success rate</td><td>Whether cut-ins actually stop the bot cleanly</td></tr>
       <tr><td>Handoff rate</td><td>And whether the human received the context</td></tr>
-      <tr><td>Resolution rate</td><td>Extends Drawer 15's four layers into voice</td></tr>
+      <tr><td>Resolution rate</td><td>Extends Drawer 17's four layers into voice</td></tr>
     </tbody>
   </table></div>
   <div class="trap"><span class="tag">Containment vs. resolution</span>
@@ -6868,7 +6868,7 @@ natural, past 1s it stops feeling like a conversation.</p>
           <span class="nd-s">5–10% of real traffic</span>
         </button>
         <div class="nd-d"><p>Real users, small blast radius. Watch the eval metrics from
-        Drawer 16on this slice specifically before touching the rest.</p></div>
+        Drawer 17 on this slice specifically before touching the rest.</p></div>
       </div>
       <div class="arw"><i>↓</i></div>
       <div class="nd">
@@ -7134,7 +7134,7 @@ total: 2687ms</code></pre>
   <ul>
     <li><strong>Classify before you generate:</strong> a cheap, fast model (or even a
     simple classifier) sorts incoming questions by complexity before the real work
-    starts — this is Drawer 13step 1's "understand" doing double duty.</li>
+    starts — this is Drawer 14 step 1's "understand" doing double duty.</li>
     <li><strong>Route simple questions to a smaller model.</strong> "What are your hours"
     doesn't need the same model as a multi-step loan-eligibility decision.</li>
     <li><strong>Escalate to a larger model only when the smaller one is uncertain</strong>
@@ -7148,7 +7148,7 @@ total: 2687ms</code></pre>
   boundary sits, and that's a product call, not purely a technical one.</div>
 
   <h3>When it breaks: incident response <span class="bf">⚙ Backend</span></h3>
-  <p>Drawer 13step 8 covers what the <em>system</em> does when one request fails.
+  <p>Drawer 14 step 8 covers what the <em>system</em> does when one request fails.
   This is what <em>your team</em> does when something's been failing for twenty minutes
   and customers have noticed.</p>
   <div class="card">
@@ -7839,7 +7839,7 @@ total: 2687ms</code></pre>
 <section class="page" id="p-platform" aria-labelledby="h-platform">
   <p class="eyebrow">Drawer 29 · Beyond one product team</p>
   <h2 id="h-platform">Everything in this catalog, once three teams need it</h2>
-  <p class="tldr"><b>TL;DR</b> Drawer 27is choosing a stack for your product. This is
+  <p class="tldr"><b>TL;DR</b> Drawer 28 is choosing a stack for your product. This is
   the question one level up: once a second and third team also want retrieval, evals, and
   guardrails, do you build each one their own, or build it once and let everyone use it?</p>
   <p class="lede">Everything in this catalog so far assumes one team building one
@@ -7943,13 +7943,13 @@ total: 2687ms</code></pre>
   a support ticket surfaces: it approved a pre-qualification by calling the credit-check
   tool twice and silently discarding the first, contradictory result. The final answer was
   right. The trajectory was not — and nothing in Drawer 17's evaluation setup would ever
-  have caught it, because Drawer 16only grades answers.</div>
+  have caught it, because Drawer 17's basic golden-set only grades answers.</div>
 
   <h3>Eval sets are code, not documents</h3>
   <p>This builds directly on Drawer 17's golden-set and LLM-as-judge material. The eval set
   lives in version control alongside the prompt (Drawer 20's prompt-as-code, extended to
   eval-set-as-code). Every prompt, RAG-index, or model change triggers the same regression
-  suite Drawer 16already builds — but now as a CI gate that can block a merge, not a report
+  suite Drawer 17 already builds — but now as a CI gate that can block a merge, not a report
   someone reads later.</p>
 
   <figure class="plate">
@@ -8206,7 +8206,7 @@ total: 2687ms</code></pre>
     head.appendChild(scenario);
 
     var badge = document.createElement("span");
-    badge.className = "evalgov-badge " + (c.finalOk ? "evalgov-badge-ok" : "evalgov-badge-ok");
+    badge.className = "evalgov-badge " + (c.finalOk ? "evalgov-badge-ok" : "evalgov-badge-risk");
     badge.textContent = "Final answer: correct";
     head.appendChild(badge);
 
@@ -8310,7 +8310,7 @@ total: 2687ms</code></pre>
   freeze the wrong account, or never freeze the right one."</div>
 
   <h3>Red-teaming as a practice, not a checklist read</h3>
-  <p>Drawer 17already lists the OWASP LLM Top 10 as a table to know. A red-team exercise
+  <p>Drawer 18 already lists the OWASP LLM Top 10 as a table to know. A red-team exercise
   is the practice of actually trying to break your own bot on a schedule — adversarial
   prompts, boundary probing on tool permissions, checking whether alerting and escalation
   actually fire when something goes wrong.</p>
@@ -8477,7 +8477,7 @@ total: 2687ms</code></pre>
     <tbody>
       <tr><td><strong>Bias detection</strong></td><td>Measuring whether outcomes differ by group (approval rate, response quality, escalation rate) — not assuming a general-purpose model is neutral by default.</td></tr>
       <tr><td><strong>Bias mitigation</strong></td><td>Acting on what detection finds — reweighting retrieval sources, adjusting a threshold, adding a human check on the specific decision type where a gap showed up.</td></tr>
-      <tr><td><strong>Explainability</strong></td><td>Being able to say <em>why</em> a specific answer or action happened — which is exactly what the citations from Drawer 07and the agent-lifecycle trace from Drawer 13already give you, named as a compliance artifact instead of just a debugging one.</td></tr>
+      <tr><td><strong>Explainability</strong></td><td>Being able to say <em>why</em> a specific answer or action happened — which is exactly what the citations from Drawer 08 and the agent-lifecycle trace from Drawer 14 already give you, named as a compliance artifact instead of just a debugging one.</td></tr>
     </tbody>
   </table></div>
   <div class="note"><span class="tag">The reframe worth knowing</span>
@@ -8664,7 +8664,7 @@ total: 2687ms</code></pre>
       <div class="lv">V5</div>
       <div>
         <h4>Autonomous agent</h4>
-        <p>The full Drawer 13lifecycle with persistent memory (Drawer 15) — it remembers
+        <p>The full Drawer 14 lifecycle with persistent memory (Drawer 15) — it remembers
         you across sessions and handles ambiguity with less hand-holding per turn.</p>
         <p class="sig">The jump that matters: from stateless-per-session to genuinely
         knowing who it's talking to.</p>
@@ -8852,7 +8852,7 @@ total: 2687ms</code></pre>
   <div class="note"><span class="tag">2026 course-correction</span>
   Most vendors that shipped AI free-inside-the-seat a year or two ago are walking it back
   toward hybrid — seat plus usage cap, or seat plus metered overage — once the margin math
-  caught up with them. Drawer 34walks through Klarna's cost-vs-quality reversal; the same
+  caught up with them. Drawer 35 walks through Klarna's cost-vs-quality reversal; the same
   underlying pressure is what's forcing this pricing retreat industry-wide.</div>
 
   <h3>Unit economics: gross margin once inference is a cost of goods</h3>
@@ -8908,7 +8908,7 @@ total: 2687ms</code></pre>
   anyone caught it is a liability event, not a bug ticket. This is exactly the shape of the
   Air Canada case in Drawer 35. Bring legal, compliance, and security into the eval-criteria
   conversation at kickoff, not the launch gate — they should see the golden set and the
-  fallback design while both are still cheap to change. Drawer 30covers who actually has
+  fallback design while both are still cheap to change. Drawer 31 covers who actually has
   the authority to stop a launch and what the law already requires; this is the scheduling
   discipline that gets them in the room early enough to use it.</div>
 
@@ -9111,7 +9111,7 @@ total: 2687ms</code></pre>
 <section class="page" id="p-consulting" aria-labelledby="h-consulting">
   <p class="eyebrow">Drawer 34 · The consulting engagement</p>
   <h2 id="h-consulting">Being the outside expert</h2>
-  <p class="tldr"><b>TL;DR</b> Drawer 31was the internal roadmap view — owning one product
+  <p class="tldr"><b>TL;DR</b> Drawer 32 was the internal roadmap view — owning one product
   through six phases. This drawer is the outside-diagnostician view: you're hired into
   someone else's system, for a scoped engagement, and the job succeeds only if the client
   can run it without you.</p>
@@ -9295,7 +9295,7 @@ total: 2687ms</code></pre>
 
   <div class="trap"><span class="tag">Trap 4</span>
   <strong>Success metrics defined after the build starts.</strong> If nobody can say today
-  what "working" means, the eval in Drawer 14has nothing to measure against.</div>
+  what "working" means, the eval in Drawer 17 has nothing to measure against.</div>
 
   <div class="trap"><span class="tag">Trap 5</span>
   <strong>The pilot team is not the rollout team.</strong> The people who built the POC leave
