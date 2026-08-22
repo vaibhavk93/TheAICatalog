@@ -3229,13 +3229,13 @@ filter comes off.</p>
   poisoning</strong>) or quietly degrade answers generally, a denial-of-service effect.</div>
 
   <h3><span class="bf">Expert</span> Field-level eval, not answer-level eval</h3>
-  <p>Drawer 15's golden set checks whether the final answer sounds right. It will not catch a
+  <p>Drawer 17's golden set checks whether the final answer sounds right. It will not catch a
   wrong number that produces a fluent, well-cited, wrong answer — a well-formatted number in
   the right field, sitting quietly wrong, is invisible to any check that only reads the final
   sentence. Document AI needs a second, separate golden set: per page class (clean typed,
   scanned, handwritten, dense table, chart, mobile photo), per field, with plausible-wrong
   cases deliberately included. Roughly 30–50 pages per class is enough to start, and it is a
-  different deliverable from Drawer 15's set, not an extension of it.</p>
+  different deliverable from Drawer 17's set, not an extension of it.</p>
   <div class="warn"><span class="tag">Two misconceptions worth killing early</span>
   "We evaluate answer accuracy, so we're covered" — answer-level evals hide extraction
   errors. And "top of the leaderboard means best for us" — models that top OmniDocBench have
@@ -7939,7 +7939,7 @@ total: 2687ms</code></pre>
   way is still a failing run.</p>
 
   <div class="note"><span class="tag">The story</span>
-  Riverbank's home-loan agent (Drawer 11) passes every final-answer check for months. Then
+  Riverbank's home-loan agent (Drawer 14) passes every final-answer check for months. Then
   a support ticket surfaces: it approved a pre-qualification by calling the credit-check
   tool twice and silently discarding the first, contradictory result. The final answer was
   right. The trajectory was not — and nothing in Drawer 17's evaluation setup would ever
@@ -8070,7 +8070,7 @@ total: 2687ms</code></pre>
 
   <h3>Grading the whole agent run, not the last line of it</h3>
   <p>Trajectory evaluation scores the path, not just the destination. This is the direct
-  evaluation layer for Drawer 11's ten-step agent turn and Drawer 17's nine-step pipeline —
+  evaluation layer for Drawer 14's ten-step agent turn and Drawer 17's nine-step pipeline —
   both describe the steps an agent takes; neither one grades them.</p>
   <div class="six">
     <div><b>Tool selection</b><em>Right tool, right moment</em></div>
@@ -8465,8 +8465,8 @@ total: 2687ms</code></pre>
   before an agent with real tool access ships. <strong>Incident disclosure</strong> is the
   plan for when the bot causes real harm — wrong balance shown, wrong loan decision made,
   PII leaked: who gets told, how fast, in what words — decided in advance, the same way
-  Drawer 22's incident response plan is decided before the first outage, not during it.
-  Drawer 22's process is about system outages; this is specifically about AI-caused user
+  Drawer 27's incident response plan is decided before the first outage, not during it.
+  Drawer 27's process is about system outages; this is specifically about AI-caused user
   harm, which is a different failure mode even when the runbook shares a shape.</div>
 
   <h3>Fairness, bias and explainability — as a named practice, not a value statement</h3>
@@ -8703,7 +8703,7 @@ total: 2687ms</code></pre>
       maintains the golden set (Drawer 17) — a real, ongoing job once the eval set needs
       to grow with every new failure mode, not a one-time setup task.</td></tr>
       <tr><td>V4–V5</td><td>An <strong>ML/applied-AI engineer</strong></td><td>Owns the
-      agent lifecycle and memory systems (Drawers 15 and 15) — genuinely different skills
+      agent lifecycle and memory systems (Drawers 14 and 15) — genuinely different skills
       from the web-engineering work in V1–V3.</td></tr>
       <tr><td>V6</td><td>Per-specialist owners (Drawer 20's multi-agent pattern)</td>
       <td>Different teams own different specialist agents independently — this is the
@@ -9253,7 +9253,7 @@ total: 2687ms</code></pre>
     </ul>
     <p style="margin-bottom:0">ROI/TCO modelling underneath those three sentences has to
     include the run cost most pitches quietly drop: model inference, human review, and the
-    ongoing eval and monitoring loop from Drawer 15. A business case that only counts build
+    ongoing eval and monitoring loop from Drawer 30. A business case that only counts build
     cost will blow its budget in month four of running.</p>
   </div>
 
@@ -9274,9 +9274,9 @@ total: 2687ms</code></pre>
   <h3>Leaving the client capable: handover and enablement</h3>
   <div class="note"><span class="tag">The specific test, not a feeling</span>
   Capability-build engagements end when a named client employee can explain the system to a
-  new hire without you in the room. Enablement means documented runbooks (Drawer 22's
+  new hire without you in the room. Enablement means documented runbooks (Drawer 27's
   minimum-viable on-call setup, written for the client's team), a training session recorded
-  and repeatable, and an explicit ownership handoff of the eval suite from Drawer 15 — a
+  and repeatable, and an explicit ownership handoff of the eval suite from Drawer 17 — a
   client who inherits a system but not its evals will not know when it silently degrades.</div>
 
   <h3>Five client failure patterns a consultant learns to spot in week one</h3>
