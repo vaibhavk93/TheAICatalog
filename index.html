@@ -2304,6 +2304,18 @@ never clean enough to support any of them.</p></div>
   This is the mechanics behind "select tools" and "act" in the ten-step agent lifecycle —
   this table is what those two steps actually have to get right.</div>
 
+  <h3>The progression, in one line each</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Term</th><th>What it actually is</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Tool</strong></td><td>One function the model can ask your code to run — the schema and description above, nothing more.</td></tr>
+      <tr><td><strong>Tool calling</strong></td><td>The mechanism from Drawer 09's loop: the model asks for a tool by name, your code runs it, the result goes back.</td></tr>
+      <tr><td><strong>MCP</strong></td><td>The standard wiring for tools, so a connector built once works across any MCP-speaking app instead of being bespoke per app.</td></tr>
+      <tr><td><strong>Agent</strong></td><td>A model choosing which tools to call and in what order across a turn — Drawer 14 covers this loop in full.</td></tr>
+      <tr><td><strong>Workflow</strong></td><td>The steps and their order are fixed in your code; the model just fills in each step — Drawer 14's default pick over an agent.</td></tr>
+    </tbody>
+  </table></div>
+
   <div class="keynote"><p>The model asks; your code decides. That one sentence is the
   entire security model for every tool you will ever give a chatbot.</p></div>
 
@@ -2317,9 +2329,15 @@ never clean enough to support any of them.</p></div>
   <p class="tldr"><b>TL;DR</b> Contextual retrieval alone cut Anthropic's measured failure
   rate from 5.7% to 1.9% — and numeric questions belong in a structured table lookup, never
   in RAG.</p>
-  <p class="lede">Everything in drawer 07gets you a working bot. This drawer is what takes
+  <p class="lede">Everything in drawer 07 gets you a working bot. This drawer is what takes
   it from "works on my test questions" to "measurably reliable" — the level 2 to level 3
   jump.</p>
+
+  <div class="note"><span class="tag">These numbers age fast — verify before quoting</span>
+  The percentages and costs in this drawer are accurate as of when it was written.
+  Benchmark results shift as models and retrieval techniques improve — treat them as the
+  shape of the win, and re-check the current figure before quoting a specific percentage
+  or cost to a client or in a decision.</div>
 
   <h3>Contextual retrieval — the single biggest win available</h3>
   <p>The problem: a chunk that reads <em>"revenue grew 3% over the previous quarter"</em>
@@ -3009,6 +3027,16 @@ filter comes off.</p>
   and a bill you can compute before you build anything: text layer first, cheap OCR second,
   a vision model only on what's left.</p></div>
 
+  <div class="note"><span class="tag">Four different jobs, one drawer</span>
+  This drawer covers four sub-areas that get lumped together but aren't the same problem:
+  <strong>OCR</strong> (turning a picture of letters into letters, below), <strong>document
+  parsing/structure</strong> (which box is the total, which row belongs to which header —
+  the tiered fallback and specialised-model sections below), <strong>vision-language
+  understanding</strong> (reasoning about a chart or photo, not just reading text off it —
+  the Expert sections below), and <strong>multimodal RAG</strong> (retrieving over images
+  and diagrams, not just text chunks — its own section further down). The cost and risk
+  profile is different for each.</div>
+
   <h3><span class="bf">Intermediate</span> Two kinds of PDF, and the free check that tells them apart</h3>
   <div class="note"><span class="tag">The cheapest check in the whole field</span>
   Before anything else: try to pull selectable text off the page. Get real words back and
@@ -3422,6 +3450,19 @@ trade off directly against sampling rate.</div>
   <div class="keynote"><p>Every other system in this catalog can be graded. This one can
   only be accepted or rejected. So the number you actually manage is not accuracy — it is
   how many pictures a human throws away before one ships.</p></div>
+
+  <h3>The pipeline in one line each</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Stage</th><th>What it is here</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Prompt</strong></td><td>The words that steer which direction each cleanup step goes — see "it starts from static" below.</td></tr>
+      <tr><td><strong>Generation</strong></td><td>Diffusion cleans random static into a picture, one of the four jobs below (text-to-image, image-to-image, inpainting, outpainting).</td></tr>
+      <tr><td><strong>Control</strong></td><td>Reference images or a structural sketch, so nine language variants still look like one campaign — the honest default, below.</td></tr>
+      <tr><td><strong>Editing</strong></td><td>Inpainting and outpainting again — swap a product, fix a sign, extend a frame, without a re-shoot.</td></tr>
+      <tr><td><strong>Evaluation</strong></td><td>No right answer to check against — two separate scores plus a human yes/no, further down.</td></tr>
+      <tr><td><strong>Safety / rights</strong></td><td>Whose face, whose copyright, whose file — and the human brand-review gate before anything publishes, further down.</td></tr>
+    </tbody>
+  </table></div>
 
   <h3>It starts from static — it isn't looking anything up</h3>
   <p><strong>Diffusion</strong> is the name for what the model is doing: start from pure
@@ -4193,6 +4234,21 @@ them: should this even be an agent?</p>
       not because "agent" sounds like the more advanced choice.</p>
     </div>
   </div>
+  <div class="nd">
+    <button type="button" class="nd-h" aria-expanded="false">
+      <span class="nd-t">Autonomous system</span>
+      <span class="nd-s">Runs across turns and time, no human approving each one</span>
+    </button>
+    <div class="nd-d">
+      <p><strong>✓ Merit:</strong> keeps working while nobody's watching — checking prices
+      overnight, monitoring a queue, retrying a job across hours or days.</p>
+      <p><strong>✗ Demerit:</strong> every mistake compounds unsupervised until something
+      finally checks on it. Drawer 20's multi-agent patterns are usually how this gets
+      built, once one agent per turn isn't enough.</p>
+      <p><strong>Pick this when:</strong> the task genuinely spans longer than one human-in-
+      the-loop turn — not as a default upgrade from agent.</p>
+    </div>
+  </div>
 </div>
 
 <div class="keynote"><p>The most senior move in agent design is refusing to build one. If
@@ -4353,6 +4409,19 @@ how confident the agent sounds.</div>
   conversation ("I'm asking on behalf of my father today") permanently pollutes every
   future turn with that user. <strong>Decide which bucket a fact belongs in when it's
   learned, not after something has already gone wrong.</strong></div>
+
+  <h3>The lifecycle of one remembered fact</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Stage</th><th>What happens to "prefers email over SMS"</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Capture</strong></td><td>The user says it mid-conversation; nothing stores it yet.</td></tr>
+      <tr><td><strong>Classify</strong></td><td>Decide which bucket it belongs in — long-term, since it's about the person, not this session.</td></tr>
+      <tr><td><strong>Store</strong></td><td>Written to the user-profile row, not the conversation log.</td></tr>
+      <tr><td><strong>Retrieve</strong></td><td>Fetched at the start of the next session, before any message is sent.</td></tr>
+      <tr><td><strong>Update</strong></td><td>Overwritten, not appended, if the user later says "actually, SMS is fine."</td></tr>
+      <tr><td><strong>Expire / delete</strong></td><td>Removed on a "forget me" request or after the retention period below — from every place it got copied to, not just the profile table.</td></tr>
+    </tbody>
+  </table></div>
 
   <h3>Two more types, and why they're not part of the core four</h3>
   <p>The broader taxonomy names six memory types, not four. The other two matter less for
@@ -4816,6 +4885,24 @@ how confident the agent sounds.</div>
     <li><strong>Calibrate it against humans.</strong> Grade a sample both ways and check they agree. Judges drift.</li>
     <li><strong>Humans stay the final word</strong> on anything that matters.</li>
   </ul>
+
+  <h3>Three ways to grade, and what each one is actually good for</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Method</th><th>Good for</th><th>Main limitation</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Human evaluation</strong></td><td>The golden set above — ground truth,
+      the final word on anything that matters.</td><td>Slow and expensive at scale; an
+      afternoon to build, too slow to run on every change.</td></tr>
+      <tr><td><strong>Model-as-judge</strong></td><td>Grading the volume a human can't —
+      every code or prompt change, nightly runs.</td><td>Drifts from human judgment unless
+      calibrated against it regularly; a bare score without a rubric is a vibe, not a
+      measurement.</td></tr>
+      <tr><td><strong>Statistical / experimental (A/B, significance)</strong></td><td>Proving
+      a change actually helped on real traffic, not just on a hundred golden questions.</td>
+      <td>Needs real volume and a sample size decided in advance — a single golden-set pass
+      is a smoke test, not this.</td></tr>
+    </tbody>
+  </table></div>
 
   <h3>Where evals run in real life</h3>
   <div class="tw"><table>
@@ -5949,6 +6036,14 @@ how confident the agent sounds.</div>
     </div>
   </div>
 
+  <div class="note"><span class="tag">How this relates to Drawers 14 and 20</span>
+  This spectrum answers "how much autonomy does this problem need" — a design choice made
+  once, up front. Drawer 14 then covers what happens inside one agentic turn once you've
+  picked "agentic" here. Drawer 20 covers what to do once a single agent's tool list has
+  outgrown one prompt. None of the three duplicate each other: this drawer is the
+  which-point-on-the-spectrum decision, Drawer 14 is the mechanics of one agent's turn,
+  Drawer 20 is the scaling decision past one agent.</div>
+
   <div class="keynote"><p>"Automate it" is not one decision — it's a choice of where on
   this spectrum the problem sits, and the honest answer is usually less autonomous than
   the most impressive available option.</p></div>
@@ -6978,6 +7073,17 @@ natural, past 1s it stops feeling like a conversation.</p>
     </div>
   </div>
 
+  <div class="note"><span class="tag">Production readiness, in one checklist</span>
+  Everything above, pulled into one list to check off before calling a launch done:
+  <strong>transport</strong> decided on purpose (SSE/WebSocket/REST, not whatever was
+  easiest); <strong>a staging → canary → full-rollout ladder</strong> with a one-command
+  <strong>rollback plan</strong> written down in advance; <strong>identity</strong> flowing
+  from login to every tool-permission gate, never trusted from a value the model typed
+  itself; the <strong>prompt in version control</strong> with a regression suite on every
+  edit; and <strong>monitoring plus cost alerts</strong> and an incident-response runbook
+  (who gets paged, what the rollback command is). Rate limits and abuse prevention are
+  Drawer 27's half of this same checklist.</div>
+
   <div class="keynote"><p>The infra choice that ages worst is the one nobody actually made —
   streaming vs. REST, canary vs. straight-to-100%, whose identity a tool call trusts. Pick
   each on purpose. All three are cheap to decide up front and expensive to retrofit under
@@ -7510,6 +7616,13 @@ total: 2687ms</code></pre>
   a deliberate choice, not the only option — here's the actual landscape it was chosen
   from, because "why not LangChain?" is a real interview question.</p>
 
+  <div class="note"><span class="tag">Vendor names and figures age fast — verify before quoting</span>
+  Which framework or model leads on cost, latency or a given benchmark shifts every few
+  months, and a named vendor can be acquired, rebrand or shut down. Treat the specific
+  names and numbers below as the shape of the landscape at the time this was written, and
+  check current pricing pages and benchmarks before quoting a specific figure to a client
+  or in a decision.</div>
+
   <h3>The framework landscape</h3>
   <div class="dg">
     <div class="nd dg-def">
@@ -7937,6 +8050,10 @@ total: 2687ms</code></pre>
   drift happens with no code change at all. And once your bot can act, grade the whole
   trajectory — tool calls, retries, recoveries — because a correct answer reached the wrong
   way is still a failing run.</p>
+
+  <div class="note"><span class="tag">The one-line relationship to Drawer 17</span>
+  Drawer 17 asks "how good is it right now." This drawer asks "does it stay good" —
+  the same golden set and judge, now wired to run continuously instead of once.</div>
 
   <div class="note"><span class="tag">The story</span>
   Riverbank's home-loan agent (Drawer 14) passes every final-answer check for months. Then
@@ -8394,6 +8511,15 @@ total: 2687ms</code></pre>
     <figcaption>Teal = read-only, doesn't widen exposure alone · Red = every one needs a gate</figcaption>
   </figure>
 
+  <div class="note"><span class="tag">Three separate concerns, easy to blur together</span>
+  <strong>AI Governance</strong> is who inside your org decides and owns the risk — the
+  red-team cadence and sign-off above. <strong>AI Security</strong> is the technical
+  defenses — the LOOK/CHANGE gates and blast-radius thinking above. <strong>AI
+  Regulation</strong> is what an outside law requires regardless of what you decide
+  internally — the EU AI Act, NIST and ISO material below. A strong technical defense
+  doesn't satisfy a legal disclosure duty, and a governance sign-off doesn't stop an
+  actual attack — treat all three as separate checklists, not one.</div>
+
   <div class="note"><span class="tag">Regulatory landscape as of Aug 2026 — verify before quoting</span>
   Every date and status below is accurate as of when this drawer was written. Regulatory
   deadlines get deferred, laws get amended, and enforcement guidance changes — treat this
@@ -8716,6 +8842,11 @@ total: 2687ms</code></pre>
   Staff for the phase you're actually building, not the phase that sounds impressive in
   a job posting.</div>
 
+  <div class="note"><span class="tag">A ladder to diagnose against, not a queue to walk</span>
+  V1–V6 is a maturity model: use it to name where a given product actually sits and what
+  the next real jump would cost, not as a mandated sequence every product must climb in
+  order. A product that genuinely only needs V2 and stops there isn't behind — it's done.</div>
+
   <div class="keynote"><p>The honest interview answer is rarely "build V6." It's naming
   which phase the actual problem justifies, and what specific, measurable signal (Drawer 16) would tell you it's time to move to the next one — not a fixed timeline.</p></div>
 
@@ -8752,6 +8883,17 @@ total: 2687ms</code></pre>
   spend-insights assistant, an auto-categoriser, a dispute-filing agent, a loan-eligibility
   explainer, and a fraud-alert triager. Leadership wants one built this quarter. This drawer
   is how the PM picks, prices, and later decides whether to keep it.</p>
+
+  <div class="tw"><table>
+    <thead><tr><th>Step</th><th>The question, in one line</th></tr></thead>
+    <tbody>
+      <tr><td><strong>AI business case</strong></td><td>Is this worth building at all, given probabilistic output — the scoring model right below.</td></tr>
+      <tr><td><strong>Unit economics</strong></td><td>What does it cost per use, and does gross margin survive once inference is a real cost of goods.</td></tr>
+      <tr><td><strong>Pricing model</strong></td><td>Seat pricing breaks when cost scales with usage — what replaces it, further down.</td></tr>
+      <tr><td><strong>ROI case</strong></td><td>Sizing the value before you have usage data, so leadership isn't approving a guess dressed as a number.</td></tr>
+      <tr><td><strong>Portfolio allocation</strong></td><td>Not every AI bet is the same kind of bet — where this one sits against the other four Riverbank ideas, at the end of this drawer.</td></tr>
+    </tbody>
+  </table></div>
 
   <h3>Picking the bet: scoring AI opportunities when the output is probabilistic</h3>
   <p>Standard RICE/ICE scoring assumes a feature either works or doesn't, and effort is
@@ -9121,6 +9263,18 @@ total: 2687ms</code></pre>
   <div class="keynote"><p>A PM stays and owns the outcome. A consultant is hired to leave —
   and the whole engagement should be designed backwards from the day you're no longer in
   the room.</p></div>
+
+  <div class="tw"><table>
+    <thead><tr><th>Stage</th><th>What it is, in one line</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Diagnose</strong></td><td>Score the client's actual AI maturity — below — before proposing anything.</td></tr>
+      <tr><td><strong>Baseline</strong></td><td>The discovery workshop: what exists today, and what it costs not to fix it — below.</td></tr>
+      <tr><td><strong>Prioritize</strong></td><td>The portfolio matrix that ranks many use cases against each other, not one tuned in isolation — below.</td></tr>
+      <tr><td><strong>Design</strong></td><td>The business case a CXO will actually act on, and the deliverable it turns into — below.</td></tr>
+      <tr><td><strong>Roadmap</strong></td><td>The phased plan the client can execute after you leave — Drawer 32's V1–V6 lens, applied to someone else's system.</td></tr>
+      <tr><td><strong>Govern</strong></td><td>Handover and enablement, so the engagement's win condition is the client running it without you — below.</td></tr>
+    </tbody>
+  </table></div>
 
   <h3>Four shapes of engagement, and what each one actually delivers</h3>
   <p>Selling the wrong shape — a scale-up when the client needed an assessment — is the
